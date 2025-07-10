@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #111;
+    }
+        .logo {
+      font-weight: bold;
+      color: #fff;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+    nav a.active, nav a:hover {
+      background-color: orange;
+      color: #fff;
+    }
+        .cta-button {
+            background-color: #ff6b35;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e55a2b;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .controller-image {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.3));
+        }
+
+        /* Trending Games Section */
+        .trending-games {
+            padding: 80px 0;
+            background-color: #111;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .see-all {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .game-info {
+            padding: 1rem;
+        }
+
+        .game-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Featured Game Section */
+        .featured-game {
+            padding: 80px 0;
+            background-color: #0a0a0a;
+        }
+
+        .featured-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .featured-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-content p {
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            background-color: #333;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #111;
+        }
+
+        .services-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #ff6b35;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .service-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 0 20px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .games-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+            .btn {
+      background-color: orange;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+  <header>
+    <div class="logo">LOGO</div>
+    <nav>
+      <a href="home.html" class="active">Home</a>
+      <a href="index.html" >About us</a>
+      <a href="#">Portfolio</a>
+      <a href="#">News</a>
+      <a href="#" class="btn">Contact us</a>
+    </nav>
+  </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Work that we produce for our clients</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="#portfolio" class="cta-button">View Our Work</a>
+                </div>
+     
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Games Section -->
+    <section class="trending-games">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Currently Trending Games</h2>
+                <a href="#" class="see-all">SEE ALL</a>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                  <img src="415833dd56905d8aead565a99461edee86e24d27 (3).jpg" alt="">
+                    <div class="game-info">
+                        <div class="game-stats">
+                            <span>👥 1.2M Followers</span>
+                            <span>⭐ 4.8 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                  <img style="height: 170px;" src="9785b4d22632d80603fc629f3a90af2f71e77160 (2).jpg" alt="">
+                    <div class="game-info">
+                        <div class="game-stats">
+                            <span>👥 980K Followers</span>
+                            <span>⭐ 4.7 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                  <img src="5fdf8129067aa0e4760746af800ca04d242d4981 (3).jpg" alt="">
+                   
+                    <div class="game-info">
+                        <div class="game-stats">
+                            <span>👥 750K Followers</span>
+                            <span>⭐ 4.9 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                  <img style="height: 170px;" src="7eb29e616d5e0990a67102e0ba74574d569aa036 (5).jpg" alt="">
+        
+                    <div class="game-info">
+                        <div class="game-stats">
+                            <span>👥 650K Followers</span>
+                            <span>⭐ 4.6 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Game Section -->
+    <section class="featured-game">
+        <div class="container">
+            <div class="featured-content">
+                <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+            <img src="494d6296bda8f371503fa58f7e526fe7b0cd55c9 (2).jpg" alt="">
+            
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-content">
+                <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🎮</div>
+                    <h3>Game Development</h3>
+                    <p>Professional game development services</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Beautiful and intuitive game interfaces</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🚀</div>
+                    <h3>Game Publishing</h3>
+                    <p>Complete publishing solutions</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">⚡</div>
+                    <h3>Performance</h3>
+                    <p>Optimized gaming performance</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Security</h3>
+                    <p>Secure gaming platforms</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Games</h3>
+                    <p>Cross-platform mobile gaming</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Game Development</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Publishing</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gaming Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
